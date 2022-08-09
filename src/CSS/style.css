@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Mouse+Memoirs&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(209, 209, 209);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.main {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow-y: hidden;
+}
+.main .header {
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #FFC54D;
+    font-family: 'Mouse Memoirs', sans-serif;
+}
+
+.main .header .logo {
+    width: 100%;
+    padding: 16px 32px;
+    font-size: 2rem;
+    letter-spacing: 1.5px;
+}
+
+.main .projects-main {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 7rem);
+    display: grid;
+    grid-template: repeat(1, 1fr)  / 250px 1fr;
+}
+.main .projects-main .side-bar {
+    padding: 32px 0;
+    position: relative;
+    background-color: #FFC54D;
+}
+.main .projects-main .side-bar .project-tabs {
+    display: flex;
+    align-items: center;
+    margin: 5px 0 0;
+    padding: 0 8px 0 0;
+    height: 48px;
+}
+.main .projects-main .side-bar .project-tabs .delete-project {
+    width: 24px;
+    height: 24px;
+    padding: 6px;
+    border-left: 1px solid #9d9d9d;
+    cursor: pointer;
+    position: relative;
+}
+/* Hide the delete project button for the default project */
+.main .projects-main .side-bar #My-Project > .delete-project {
+    display: none;
+}
+.main .projects-main .side-bar h3 {
+    position: relative;
+    margin: 0 auto;
+    padding: 16px 8px;
+    width: 80%;
+    font-weight: 400;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.main .projects-main .side-bar #My-Project h3::after {
+    content: "default";
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px;
+    position: absolute;
+    color: #BD4291;
+    font-size: 10px;
+    font-weight: 500;
+    text-decoration:underline;
+}
+.main .projects-main .side-bar .add-btn {
+    display: block;
+    width: 80%;
+    margin: 0 auto 32px;
+    text-align: center;
+    height: 32px;
+    background-color: #BD4291;
+    border: none;
+    color: #fff;
+}
+.main .projects-main .side-bar .active-project {
+    background-color: rgb(209, 209, 209);
+}
+
+.main .projects-main .side-bar .new-project {
+    position: absolute;
+    top: 0;
+    left: -110%;
+    width: 100%; 
+    height: auto;
+    padding: 32px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(156, 156, 156);
+    row-gap: 32px;
+    left: -110%;
+    transition: all 0.4s linear;
+    z-index: 4;
+}
+.main .projects-main .side-bar .new-project.show-form {
+    left: 0;
+}
+
+.main .projects-main .side-bar .new-project input {
+    width: 80%;
+    height: 32px;
+    outline: none;
+    background-color: #fff;
+    border: 1px solid #FFC54D;
+    border-radius: 5px;
+    padding: 0 12px;
+}
+.main .projects-main .side-bar .new-project input::placeholder{
+    font-weight: bold;
+}
+.main .projects-main .side-bar .new-project .buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+}
+.main .projects-main .side-bar .new-project .buttons button {
+    padding: 8px 16px;
+    background-color: #53BF9D;
+    border: none;
+}
+.main .projects-main .side-bar .new-project .buttons button.cancel {
+    background-color: red;
+    color: white;
+}
+
+.main .projects-main .tasks-main {
+    position: relative;
+    width: 100%; 
+    height: 100%;
+    padding: 32px 16px;
+}
+.main .projects-main .tasks-main .tasks-top {
+    position: relative;
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.2px solid rgb(160, 160, 160);
+    padding: 0 16px 16px;
+}
+.main .projects-main .tasks-main .tasks-top h3 {
+    position: relative;
+    font-weight: 500;
+    text-transform: capitalize;
+    letter-spacing: 1.5px;
+    font-size: 1.4rem;
+}
+.main .projects-main .tasks-main .tasks-top .add-task {
+    padding: 12px 32px;
+    font-weight: bold;
+    letter-spacing: 1.3px;
+    border: none;
+    background-color: #53BF9D;
+}
+.main .projects-main .tasks-main .tasks-top .task-form {
+    position: absolute;
+    width: 300px;
+    height: auto;
+    top: 100%;
+    right: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 4;
+    background-color: #FFC54D;
+    padding: 32px 16px;
+    transform: scale(0);
+    transition: all 0.3s ease;
+    transform-origin: top right;
+}
+.main .projects-main .tasks-main .tasks-top .task-form.show-task-form {
+    transform: scale(1);
+}
+.main .projects-main .tasks-main .tasks-top .task-form h4 {
+    font-weight: 500;
+    margin: 0 0 16px;
+}
+.main .projects-main .tasks-main .tasks-top .task-form input {
+    width: 100%;
+    height: 32px;
+    outline: none;
+    background-color: #fff;
+    border: 1px solid #FFC54D;
+    border-radius: 5px;
+    padding: 0 12px;
+    margin: 0 0 6px;
+}
+.main .projects-main .tasks-main .tasks-top .task-form input::placeholder {
+    font-weight: bold;
+}
+.main .projects-main .tasks-main .tasks-top .task-form textarea {
+    width: 100%;
+    height: 64px;
+    outline: none;
+    background-color: #fff;
+    border: 1px solid #FFC54D;
+    border-radius: 5px;
+    padding: 0 12px;
+    margin: 0 0 6px;
+}
+.main .projects-main .tasks-main .tasks-top .task-form .buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 12px 0 0;
+}
+.main .projects-main .tasks-main .tasks-top .task-form .buttons button {
+    padding: 8px 16px;
+    background-color: #53BF9D;
+    border: none;
+}
+.main .projects-main .tasks-main .tasks-top .task-form .buttons button.cancel-task {
+    background-color: red;
+    color: white;
+}
+.main .projects-main .tasks-main .project-cards {
+    padding: 0 16px;
+    position: relative;
+    margin: 32px 0 0;
+    height: calc(100vh - 12rem);
+    width: 100%;
+    display: grid;
+    grid-template: repeat(1, 150px) / repeat(3, 1fr);
+    grid-auto-rows: 150px;
+    gap: 32px;
+    justify-content: space-evenly;
+}
+.main .projects-main .tasks-main .project-cards .task-card {
+    position: relative;
+    padding: 16px;
+    display: grid;
+    grid-template: 1fr / 3fr 1fr;
+    background-color: rgb(240, 240, 240);
+    transition: transform 0.3s ease;
+}
+.main .projects-main .tasks-main .project-cards .task-card::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 5px;
+    left: 0;
+    top: 0;
+    background-color: #FFC54D;
+    transition: transform 0.2s linear 0.2s;
+}
+.main .projects-main .tasks-main .project-cards .task-card:hover {
+    transform: scale(1.05);
+}
+.main .projects-main .tasks-main .project-cards .task-card .card-info h4 {
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin: 0 0 10px;
+}
+.main .projects-main .tasks-main .project-cards .task-card .card-info p {
+    font-weight: 300;
+    font-size: 0.8rem;
+}
+.main .projects-main .tasks-main .project-cards .task-card .card-info .description {
+    margin: 10px 0 0;
+
+}
+.main .projects-main .tasks-main .project-cards .task-card .card-info .description h6 {
+    font-weight: bold;
+    letter-spacing: 1.2px;
+    margin: 0 0 5px;
+}
+.main .projects-main .tasks-main .project-cards .task-card .card-info .description p {
+    font-size: 0.7rem;
+}
+.main .projects-main .tasks-main .project-cards .task-card .card-actions {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 12px;
+    font-size: 0.8rem;
+}
+.main .projects-main .tasks-main .project-cards .task-card .card-actions button {
+    padding: 6px 0;
+    background-color: #9d9d9d;
+    border: none;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+}
